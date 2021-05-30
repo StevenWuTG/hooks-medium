@@ -1,8 +1,16 @@
-import  { useState } from 'react'
+import  { useState, useEffect } from 'react'
 
 const Counter = () => {
 
     const [count, setCount] = useState(3)
+
+    useEffect(()=> {
+        console.log(`count: ${count}`)
+
+        return ()=> {
+            console.log("cleaning up")
+        }
+    },[count])
 
   
 
@@ -22,6 +30,9 @@ const Counter = () => {
             <button  onClick={() => setCount(count - 1)}>
                 -
             </button>
+
+            {/* useEffect visuals */}
+
         </div>
     )
 }
